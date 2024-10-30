@@ -7,22 +7,18 @@ namespace TradingCards
     {
         private Player CurrentPlayer;
         private Card CurrentCard;
-        
-        
-
 
         public Form1()
         {
             InitializeComponent();
-            // NEED TO SET CURRENTPLAYER
+            CurrentPlayer = new Player("Test Name", "Test Team", "");
+
+            CurrentCard = new Card(new Point(206, 12), CurrentPlayer, this);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Card CurrentCard = new Card(new Point(206, 12));
             CurrentCard.Draw(this);
         }
-
-        
     }
 }
