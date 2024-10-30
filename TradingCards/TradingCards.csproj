@@ -8,4 +8,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Images\" />
+    <Folder Include="Data\PlayerData\" />
+  </ItemGroup>
+
 </Project>
