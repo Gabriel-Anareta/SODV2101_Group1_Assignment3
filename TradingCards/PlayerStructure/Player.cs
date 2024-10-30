@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using sd = System.Drawing;
+using System.Drawing;
 
 namespace TradingCards.PlayerStructure
 {
@@ -23,10 +23,10 @@ namespace TradingCards.PlayerStructure
             Image = image;
         }
 
-        public sd.Image AsDrawImage()
+        public System.Drawing.Image GetImage()
         {
             string imagePath = Path.Combine(Environment.CurrentDirectory, Image);
-            return sd.Image.FromFile(imagePath);
+            return System.Drawing.Image.FromFile(imagePath);
         }
     }
 }
