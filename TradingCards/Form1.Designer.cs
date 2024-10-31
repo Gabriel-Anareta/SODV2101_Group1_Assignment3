@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listBox1 = new ListBox();
+            lb_AllCards = new ListBox();
             SuspendLayout();
             // 
-            // listBox1
+            // lb_AllCards
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(12, 12);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(175, 224);
-            listBox1.TabIndex = 0;
+            lb_AllCards.FormattingEnabled = true;
+            lb_AllCards.Location = new Point(12, 12);
+            lb_AllCards.Name = "lb_AllCards";
+            lb_AllCards.Size = new Size(175, 224);
+            lb_AllCards.TabIndex = 0;
+            lb_AllCards.SelectedIndexChanged += lb_AllCards_SelectedIndexChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(526, 450);
-            Controls.Add(listBox1);
+            Controls.Add(lb_AllCards);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -53,6 +54,6 @@
 
         #endregion
 
-        private ListBox listBox1;
+        private ListBox lb_AllCards;
     }
 }

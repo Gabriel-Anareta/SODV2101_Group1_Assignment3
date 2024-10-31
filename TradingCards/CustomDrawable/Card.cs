@@ -26,13 +26,10 @@ namespace TradingCards.CustomDrawable
         private Label lbl_FG_Perc;
         private PictureBox pb_Player;
 
-        private bool drawn;
-
         public Card(Point position, Player player) 
         { 
             BoundedPlayer = player;
             Location = position;
-            drawn = false;
             
             // Set statistics controls
             lbl_Name = CreateLabel(new Point(Location.X + 10, Location.Y + 220), "Name");
@@ -47,16 +44,16 @@ namespace TradingCards.CustomDrawable
 
             // Set image controls
             pb_Player = new PictureBox();
-            //pb_Player.Image = CurrentPlayer.GetImage();
-            //pb_Player.Location = new Point(226, 32);
+            pb_Player.SizeMode = PictureBoxSizeMode.CenterImage;
+            pb_Player.Image = player.GetImage(); // throwing system.outofmemory exception ??
+            pb_Player.Location = new Point(Location.X + 10, 32);
+            pb_Player.Size = new Size(Width - 20, Width - 20);
+
         }
 
         public void Draw(Form form)
         {
             // Display controls to form
-            if (drawn)
-                return;
-
             form.Controls.Add(lbl_Name);
             form.Controls.Add(lbl_Team);
             form.Controls.Add(lbl_POS);
@@ -68,8 +65,15 @@ namespace TradingCards.CustomDrawable
             form.Controls.Add(lbl_FG_Perc);
 
 
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    pb_Player.ImageLocation = ofd.FileName;
+            //}
+
+            form.Controls.Add(pb_Player);
+
             form.Paint += DrawBorder;
-            drawn = true;
         }
 
         private void DrawBorder(object sender, PaintEventArgs e)

@@ -33,8 +33,6 @@ namespace TradingCards.PlayerInfo
             // for each property, set respective value from data
             for (int i = 0; i < props.Length; i++)
                 props[i].SetValue(this, DataValue(props[i], data[i]));
-
-            this.Image = "";
         }
 
         private dynamic? DataValue(PropertyInfo prop, string data) // Note: code taken from assignment 2 - refactored to fit context
@@ -72,7 +70,7 @@ namespace TradingCards.PlayerInfo
 
         public System.Drawing.Image GetImage()
         {
-            string imagePath = Path.Combine(Environment.CurrentDirectory, Image);
+            string imagePath = Path.Combine(Environment.CurrentDirectory, @"Data/Images/", Image);
             return System.Drawing.Image.FromFile(imagePath);
         }
 
