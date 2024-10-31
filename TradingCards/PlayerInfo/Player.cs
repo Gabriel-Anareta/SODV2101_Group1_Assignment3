@@ -66,6 +66,8 @@ namespace TradingCards.PlayerInfo
             // for each property, set respective value from data
             for (int i = 0; i < props.Length; i++)
                 props[i].SetValue(this, props[i].GetValue(player));
+
+            OnPropertyChanged();
         }
 
         public System.Drawing.Image GetImage()

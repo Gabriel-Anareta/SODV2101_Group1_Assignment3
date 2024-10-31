@@ -17,6 +17,13 @@ namespace TradingCards.CustomDrawable
         private Point Location;
         private Label lbl_Name;
         private Label lbl_Team;
+        private Label lbl_POS;
+        private Label lbl_GP;
+        private Label lbl_MIN;
+        private Label lbl_PTS;
+        private Label lbl_FGM;
+        private Label lbl_FGA;
+        private Label lbl_FG_Perc;
         private PictureBox pb_Player;
 
         private bool drawn;
@@ -30,6 +37,13 @@ namespace TradingCards.CustomDrawable
             // Set statistics controls
             lbl_Name = CreateLabel(new Point(Location.X + 10, Location.Y + 220), "Name");
             lbl_Team = CreateLabel(new Point(Location.X + 10, Location.Y + 245), "Team");
+            lbl_POS = CreateLabel(new Point(Location.X + 10, Location.Y + 270), "POS");
+            lbl_GP = CreateLabel(new Point(Location.X + 10, Location.Y + 295), "GP");
+            lbl_MIN = CreateLabel(new Point(Location.X + 10, Location.Y + 320), "MIN");
+            lbl_PTS = CreateLabel(new Point(Location.X + 150, Location.Y + 220), "PTS");
+            lbl_FGM = CreateLabel(new Point(Location.X + 150, Location.Y + 245), "FGM");
+            lbl_FGA = CreateLabel(new Point(Location.X + 150, Location.Y + 270), "FGA");
+            lbl_FG_Perc = CreateLabel(new Point(Location.X + 150, Location.Y + 295), "FG_Perc");
 
             // Set image controls
             pb_Player = new PictureBox();
@@ -45,7 +59,15 @@ namespace TradingCards.CustomDrawable
 
             form.Controls.Add(lbl_Name);
             form.Controls.Add(lbl_Team);
-            
+            form.Controls.Add(lbl_POS);
+            form.Controls.Add(lbl_GP);
+            form.Controls.Add(lbl_MIN);
+            form.Controls.Add(lbl_PTS);
+            form.Controls.Add(lbl_FGM);
+            form.Controls.Add(lbl_FGA);
+            form.Controls.Add(lbl_FG_Perc);
+
+
             form.Paint += DrawBorder;
             drawn = true;
         }
