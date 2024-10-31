@@ -10,7 +10,12 @@
 
   <ItemGroup>
     <Folder Include="Data\Images\" />
-    <Folder Include="Data\PlayerData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\PlayerData\NBA_PlayerStats_24-25.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

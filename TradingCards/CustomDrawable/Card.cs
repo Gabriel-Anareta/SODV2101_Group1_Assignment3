@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TradingCards.PlayerStructure;
+using TradingCards.PlayerInfo;
 
 namespace TradingCards.CustomDrawable
 {
@@ -21,17 +21,15 @@ namespace TradingCards.CustomDrawable
 
         private bool drawn;
 
-        public Card(Point position, Player player, Form form) 
+        public Card(Point position, Player player) 
         { 
             BoundedPlayer = player;
             Location = position;
             drawn = false;
             
-            // Set name controls
-            lbl_Name = CreateLabel(new Point(Location.X + 20, Location.Y + 220), "Name");
-           
-            // Set team conrols
-            lbl_Team = CreateLabel(new Point(Location.X + 20, Location.Y + 250), "Team");
+            // Set statistics controls
+            lbl_Name = CreateLabel(new Point(Location.X + 10, Location.Y + 220), "Name");
+            lbl_Team = CreateLabel(new Point(Location.X + 10, Location.Y + 245), "Team");
 
             // Set image controls
             pb_Player = new PictureBox();
