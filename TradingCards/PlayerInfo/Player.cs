@@ -28,6 +28,18 @@ namespace TradingCards.PlayerInfo
             Image = GetImage(Name);
         }
 
+        public Player(List<string> data, Image image)
+        {
+            // setting player properties using reflection
+            PropertyInfo[] props = this.GetType().GetProperties();
+
+            // for each property, set respective value from data
+            for (int i = 0; i < props.Length - 1; i++)
+                props[i].SetValue(this, DataValue(props[i], data[i]));
+
+            Image = image;
+        }
+
         private dynamic? DataValue(PropertyInfo prop, string data)
         {
             Type propType = prop.PropertyType;

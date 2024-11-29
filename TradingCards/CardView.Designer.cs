@@ -1,6 +1,6 @@
 ﻿namespace TradingCards
 {
-    partial class Form1
+    partial class CardView
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,6 +30,8 @@
         {
             lb_AllCards = new ListBox();
             PlayerCard = new CardControl();
+            btn_Add = new Button();
+            btn_Delete = new Button();
             SuspendLayout();
             // 
             // lb_AllCards
@@ -52,16 +54,37 @@
             PlayerCard.Size = new Size(339, 448);
             PlayerCard.TabIndex = 1;
             // 
-            // Form1
+            // btn_Add
+            // 
+            btn_Add.Location = new Point(12, 242);
+            btn_Add.Name = "btn_Add";
+            btn_Add.Size = new Size(94, 29);
+            btn_Add.TabIndex = 2;
+            btn_Add.Text = "Add";
+            btn_Add.UseVisualStyleBackColor = true;
+            btn_Add.Click += btn_Add_Click;
+            // 
+            // btn_Delete
+            // 
+            btn_Delete.Location = new Point(12, 277);
+            btn_Delete.Name = "btn_Delete";
+            btn_Delete.Size = new Size(94, 29);
+            btn_Delete.TabIndex = 3;
+            btn_Delete.Text = "Delete";
+            btn_Delete.UseVisualStyleBackColor = true;
+            btn_Delete.Click += this.btn_Delete_Click;
+            // 
+            // CardView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(544, 487);
+            Controls.Add(btn_Delete);
+            Controls.Add(btn_Add);
             Controls.Add(PlayerCard);
             Controls.Add(lb_AllCards);
-            Name = "Form1";
+            Name = "CardView";
             Text = "Form1";
-            Load += Form1_Load;
             ResumeLayout(false);
         }
 
@@ -69,5 +92,7 @@
 
         private ListBox lb_AllCards;
         private CardControl PlayerCard;
+        private Button btn_Add;
+        private Button btn_Delete;
     }
 }
