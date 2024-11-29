@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace TradingCards.PlayerInfo
+﻿namespace TradingCards.PlayerInfo
 {
     static public class PlayerData // Note: code taken from assignment 2 - refactored to fit context
     {

@@ -29,22 +29,35 @@
         private void InitializeComponent()
         {
             lb_AllCards = new ListBox();
+            PlayerCard = new CardControl();
             SuspendLayout();
             // 
             // lb_AllCards
             // 
+            lb_AllCards.DisplayMember = "Name";
             lb_AllCards.FormattingEnabled = true;
             lb_AllCards.Location = new Point(12, 12);
             lb_AllCards.Name = "lb_AllCards";
             lb_AllCards.Size = new Size(175, 224);
             lb_AllCards.TabIndex = 0;
+            lb_AllCards.ValueMember = "Name";
             lb_AllCards.SelectedIndexChanged += lb_AllCards_SelectedIndexChanged;
+            // 
+            // PlayerCard
+            // 
+            PlayerCard.BackColor = Color.Gray;
+            PlayerCard.BoundedPlayer = null;
+            PlayerCard.Location = new Point(193, 12);
+            PlayerCard.Name = "PlayerCard";
+            PlayerCard.Size = new Size(339, 448);
+            PlayerCard.TabIndex = 1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(526, 450);
+            ClientSize = new Size(544, 487);
+            Controls.Add(PlayerCard);
             Controls.Add(lb_AllCards);
             Name = "Form1";
             Text = "Form1";
@@ -55,5 +68,6 @@
         #endregion
 
         private ListBox lb_AllCards;
+        private CardControl PlayerCard;
     }
 }

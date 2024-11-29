@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Reflection;
 
 namespace TradingCards.PlayerInfo
@@ -22,20 +14,21 @@ namespace TradingCards.PlayerInfo
         public double FGM { get; set; }
         public double FGA { get; set; }
         public double FG_Perc { get; set; }
-        public string Image { get; set; }
+        public Image Image { get; set; }
 
-
-        public Player(List<string> data) // Note: code taken from assignment 2 - refactored to fit context
+        public Player(List<string> data)
         {
             // setting player properties using reflection
             PropertyInfo[] props = this.GetType().GetProperties();
 
             // for each property, set respective value from data
-            for (int i = 0; i < props.Length; i++)
+            for (int i = 0; i < props.Length - 1; i++)
                 props[i].SetValue(this, DataValue(props[i], data[i]));
+
+            Image = GetImage(Name);
         }
 
-        private dynamic? DataValue(PropertyInfo prop, string data) // Note: code taken from assignment 2 - refactored to fit context
+        private dynamic? DataValue(PropertyInfo prop, string data)
         {
             Type propType = prop.PropertyType;
 
@@ -56,7 +49,7 @@ namespace TradingCards.PlayerInfo
             return Convert.ChangeType(null, propType);
         }
 
-        public void SetValues(Player player) // Note: code taken from assignment 2 - refactored to fit context
+        public void SetValues(Player player)
         {
             // setting player properties using reflection
             PropertyInfo[] props = this.GetType().GetProperties();
@@ -68,14 +61,25 @@ namespace TradingCards.PlayerInfo
             OnPropertyChanged();
         }
 
-        public System.Drawing.Image GetImage()
+        public System.Drawing.Image GetImage(string name)
         {
-            string imagePath = Path.Combine(Environment.CurrentDirectory, @"Data/Images/", Image);
-            return System.Drawing.Image.FromFile(imagePath);
+            return name switch 
+            {
+                "Anthony Davis" => Properties.Resources.AnthonyDavis,
+                "Max Christie" => Properties.Resources.MaxChristie,
+                "Jaxson Hayes" => Properties.Resources.JaxsonHayes,
+                "Cam Reddish" => Properties.Resources.CamReddish,
+                "Chet Holmgren" => Properties.Resources.ChetHolmgren,
+                "Shai Gilgeous-Alexander" => Properties.Resources.ShaiGilgeousAlexander,
+                "Cason Wallace" => Properties.Resources.CasonWallace,
+                "Trae Young" => Properties.Resources.TraeYoung,
+                "Jalen Johnson" => Properties.Resources.JalenJohnson,
+                "Onyeka Okongwu" => Properties.Resources.OnyekaOkongwu
+            };
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string property = null)
+        public void OnPropertyChanged(string property = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }

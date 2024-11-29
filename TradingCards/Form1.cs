@@ -1,28 +1,26 @@
 using TradingCards.PlayerInfo;
-using TradingCards.CustomDrawable;
 
 namespace TradingCards
 {
     public partial class Form1 : Form
     {
-        private readonly Point CardPosition = new Point(206, 12);
-
-        private Player CurrentPlayer;
-        private Card CurrentCard;
+        private List<Player> AllPlayers;
+        public Player CurrentPlayer { get; set; }
 
         public Form1()
         {
             InitializeComponent();
-            CurrentPlayer = PlayerData.AllData.First();
-            CurrentCard = new Card(CardPosition, CurrentPlayer);
-            lb_AllCards.DataSource = PlayerData.AllData;
-            lb_AllCards.DisplayMember = "Name";
-            lb_AllCards.ValueMember = "Name";
+            AllPlayers = PlayerData.AllData;
+            CurrentPlayer = AllPlayers.First();
+            lb_AllCards.DataSource = AllPlayers;
+            PlayerCard.BoundedPlayer = CurrentPlayer;
+            PlayerCard.DataBindings.Add(new Binding("BoundedPlayer", this, nameof(this.CurrentPlayer), true, DataSourceUpdateMode.OnPropertyChanged));
+            PlayerCard.SetBindings();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CurrentCard.Draw(this);
+            
         }
 
         private void lb_AllCards_SelectedIndexChanged(object sender, EventArgs e)
